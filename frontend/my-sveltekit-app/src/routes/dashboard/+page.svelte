@@ -40,16 +40,21 @@ function handleLogout() {
 </script>
 
 <style>
-  body {
+  html, body {
+    margin: 0;
+    padding: 0;
     background-color: #1a1a1a;
     color: #f3f3f3;
     font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
   }
 
   .container {
-    max-width: 960px;
-    margin: 3rem auto;
-    padding: 1.5rem 2rem;
+    width: 100%;
+    max-width: 1080px;
+    margin: 2rem auto;
+    padding: 1rem 1.5rem;
+    box-sizing: border-box;
     background: #121212;
     border-radius: 12px;
     border: 1px solid #333;
@@ -60,21 +65,20 @@ function handleLogout() {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 1.5rem;
-    color: white;
   }
 
   .controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
     flex-wrap: wrap;
     gap: 1rem;
+    margin-bottom: 1rem;
   }
 
   .view-buttons button {
     padding: 0.6rem 1rem;
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 600;
     border: none;
     border-radius: 6px;
@@ -97,25 +101,50 @@ function handleLogout() {
     font-size: 1rem;
   }
 
+  .logout-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .logout-bar button {
+    background-color: #f87171;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .logout-bar button:hover {
+    background-color: #ef4444;
+  }
+
   table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1rem;
+    overflow-x: auto;
   }
 
   th, td {
-    padding: 0.9rem;
+    padding: 0.75rem;
     text-align: left;
     border-bottom: 1px solid #333;
+    white-space: nowrap;
   }
 
   th {
     background-color: #1f1f1f;
     color: #aaa;
+    font-size: 0.95rem;
   }
 
   td {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .paid {
@@ -129,13 +158,13 @@ function handleLogout() {
   }
 
   .actions button {
-    padding: 0.4rem 0.75rem;
-    margin-right: 0.5rem;
+    padding: 0.4rem 0.7rem;
+    margin-right: 0.4rem;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     transition: background-color 0.2s ease;
   }
 
@@ -158,65 +187,70 @@ function handleLogout() {
   }
 
   .card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
 
-.stat-card {
-  background-color: #1f1f1f;
-  border: 1px solid #333;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
-  text-align: center;
-  transition: transform 0.2s ease;
-}
+  .stat-card {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    padding: 1.2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+    text-align: center;
+  }
 
-.stat-card:hover {
-  transform: translateY(-5px);
-}
+  .stat-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #ccc;
+  }
 
-.stat-card h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-  color: #ccc;
-}
+  .stat-card p {
+    font-size: 1.7rem;
+    font-weight: bold;
+  }
 
-.stat-card p {
-  font-size: 1.8rem;
-  font-weight: bold;
-}
+  .stat-card.green p { color: #4ade80; }
+  .stat-card.red p { color: #f87171; }
+  .stat-card.indigo p { color: #a78bfa; }
+  .stat-card.blue p { color: #60a5fa; }
 
-.stat-card.green p { color: #4ade80; }
-.stat-card.red p { color: #f87171; }
-.stat-card.indigo p { color: #a78bfa; }
-.stat-card.blue p { color: #60a5fa; }
+  @media (max-width: 640px) {
+    h2 {
+      font-size: 1.5rem;
+    }
 
+    .controls {
+      flex-direction: column;
+      align-items: flex-start;
+    }
 
-.logout-bar {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 1rem;
-}
+    th, td {
+      font-size: 0.85rem;
+    }
 
-.logout-bar button {
-  background-color: #f87171;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
+    .view-buttons button,
+    .filter select,
+    .logout-bar button {
+      font-size: 0.9rem;
+      padding: 0.5rem 0.8rem;
+    }
 
-.logout-bar button:hover {
-  background-color: #ef4444;
-}
+    .actions button {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.6rem;
+    }
 
+    .card-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
 </style>
+
+
 
 <div class="container">
 <div class="logout-bar">
