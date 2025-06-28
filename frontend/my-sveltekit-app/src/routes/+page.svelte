@@ -21,7 +21,7 @@
   }
 
   h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 300;
     letter-spacing: 2px;
     margin-bottom: 1rem;
@@ -64,7 +64,7 @@
 </style>
 
 <div class="hero">
-  <h1>Aachi Dance Academy</h1>
+  <h1>Achchi Classical Dance Centre</h1>
   <p>Grace. Rhythm. Power. Welcome to your digital studio.</p>
   <button on:click={handleLogin}>Login</button>
 </div>
