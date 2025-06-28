@@ -17,6 +17,13 @@ $: totalCollected = paidCount * totalAmount;
     { name: 'Ravi Kumar', paid: false, history: { Jan: false, Feb: false, Mar: false } }
   ];
 
+
+import { goto } from '$app/navigation';
+
+function handleLogout() {
+  goto('/');
+}
+
   const months = ['Jan', 'Feb', 'Mar'];
 
   function sendReminder(student) {
@@ -187,9 +194,35 @@ $: totalCollected = paidCount * totalAmount;
 .stat-card.indigo p { color: #a78bfa; }
 .stat-card.blue p { color: #60a5fa; }
 
+
+.logout-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.logout-bar button {
+  background-color: #f87171;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.logout-bar button:hover {
+  background-color: #ef4444;
+}
+
 </style>
 
 <div class="container">
+<div class="logout-bar">
+  <button on:click={handleLogout}>🚪 Logout</button>
+</div>
+
   <h2>💼 Payment Management Dashboard</h2>
 
   <div class="controls">
