@@ -6,7 +6,7 @@
   let error = '';
 
   function handleLogin() {
-    if (username === 'danceacademy' && password === 'Dance@123') {
+    if (username === 'test' && password === '12345') {
       goto('/dashboard');
     } else {
       error = '❌ Invalid credentials';
